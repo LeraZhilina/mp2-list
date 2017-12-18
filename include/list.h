@@ -24,7 +24,7 @@ class List
   // любые поля
   Node* head;
 public:
-  List();
+	List() {head= NULL;}
   List(const List& list2);
   List& operator=(const List& list2);
   ~List() { Clean(); };
