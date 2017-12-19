@@ -61,27 +61,28 @@ void List::Clean()
 
 List& List::operator=(const List& list2)
 {
-
-	Clean();
-	if (list2.head == NULL)
+	if (this != &list2)
 	{
-		head = list2.head;
-		return *this;
-	}
-	else
-	{
-		head = new Node(list2.head->data, list2.head);
-		Node *tmp = head;
-		Node *tmp2 = list2.head->next;
-		while (tmp2 != NULL)
+		Clean();
+		if (list2.head == NULL)
 		{
-			tmp->next = new Node(tmp2->data, tmp2->next);
-			tmp = tmp->next;
-			tmp2 = tmp2->next;
+			head = list2.head;
+			return *this;
 		}
-		return *this;
+		else
+		{
+			head = new Node(list2.head->data, list2.head);
+			Node *tmp = head;
+			Node *tmp2 = list2.head->next;
+			while (tmp2 != NULL)
+			{
+				tmp->next = new Node(tmp2->data, tmp2->next);
+				tmp = tmp->next;
+				tmp2 = tmp2->next;
+			}
+			return *this;
+		}
 	}
-	
 
 }/*--------------------------------------------------------------*/
 
@@ -154,7 +155,7 @@ void List::Delete(const DataType& d)
 Node* List::Search(const DataType& d)
 {
 	Node* cur = head;
-	while (cur);
+	while (cur)
 	{
 		if (cur->data == d)
 			return cur;
