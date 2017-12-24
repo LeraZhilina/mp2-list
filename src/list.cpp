@@ -83,6 +83,8 @@ List& List::operator=(const List& list2)
 			return *this;
 		}
 	}
+	else 
+		retutn *this;
 
 }/*--------------------------------------------------------------*/
 
